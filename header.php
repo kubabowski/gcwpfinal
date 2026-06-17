@@ -40,3 +40,4 @@
     </header><!-- #masthead -->
 
     <div id="content" class="site-content">
+    <div style="margin-top: 50px;" class="container">

@@ -32,7 +32,7 @@ if ( ! $hero ) return;
             </h1>
 
             <p class="hero-tagline">
-                <?php echo $hero['text2']; ?>
+                <h2><?php echo $hero['text2']; ?></h2>
             </p>
 
             <?php if ( $hero['button_url'] ) : ?>

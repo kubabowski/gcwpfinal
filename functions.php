@@ -116,12 +116,25 @@ function mytheme_setup() {
         'flex-width'  => true,
         'header-text' => array( 'site-title', 'site-description' ),
     ) );
+
+    add_theme_support( 'woocommerce' );
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'mytheme_setup' );
 
-// WooCommerce — usuń tylko wrappery, nic więcej
-//add_action( 'after_setup_theme', function () {
-//    remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
-//    remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
-//    remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-//} );
+// WooCommerce wrappers (required when theme support is declared)
+add_action( 'woocommerce_before_main_content', function() {
+    echo '<div id="primary" class="content-area"><main id="main" class="site-main" role="main"><div class="container">';
+}, 10 );
+
+add_action( 'woocommerce_after_main_content', function() {
+    echo '</div></main></div>';
+}, 10 );
+
+// Remove WC sidebar on shop/product pages
+add_action( 'woocommerce_before_main_content', function() {
+    remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+}, 1 );
+

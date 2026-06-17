@@ -205,6 +205,11 @@ body::before {
 
 .hero-content {
     max-width: 680px;
+
+
+    * {
+        color: rgba(255,255,255) !important;
+    }
 }
 
 .hero-logo {
@@ -239,7 +244,10 @@ body::before {
     animation: fadeUp 1s 0.3s ease both;
 }
 
-.hero-tagline p { margin: 0; }
+.hero-tagline {
+    margin: 0;
+    color: rgba(255,255,255,0.75);
+}
 
 /* Scroll cue */
 .hero-content::after {
@@ -248,8 +256,10 @@ body::before {
     width: 1px;
     height: 70px;
     background: linear-gradient(to bottom, var(--c-gold-light), transparent);
+
     margin-top: 3.5rem;
     animation: fadeUp 1s 0.5s ease both, pulse 2.5s 1.5s ease-in-out infinite;
+
 }
 
 /* ══════════════════════════════════════════════════════════
