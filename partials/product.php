@@ -26,18 +26,18 @@ if ( ! $product ) return;
 
             <div class="product-content">
 
-                <h2><?php echo esc_html( $product['header'] ); ?></h2>
+                <h2><?php echo  $product['header']; ?></h2>
 
-                <p><?php echo esc_html( $product['desc'] ); ?></p>
+                <p><?php echo $product['desc']; ?></p>
 
                 <?php if ( $product['text'] ) : ?>
-                    <p><?php echo esc_html( $product['text'] ); ?></p>
+                    <p><?php echo  $product['text']; ?></p>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $product['features'] ) ) : ?>
                     <ul class="product-features">
                         <?php foreach ( $product['features'] as $feature ) : ?>
-                            <li><?php echo esc_html( $feature ); ?></li>
+                            <li><?php echo $feature; ?></li>
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>

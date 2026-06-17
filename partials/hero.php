@@ -28,11 +28,11 @@ if ( ! $hero ) return;
             <?php endif; ?>
 
             <h1 class="hero-title">
-                <?php echo esc_html( $hero['text1'] ); ?>
+                <?php echo $hero['text1']; ?>
             </h1>
 
             <p class="hero-tagline">
-                <?php echo esc_html( $hero['text2'] ); ?>
+                <?php echo $hero['text2']; ?>
             </p>
 
             <?php if ( $hero['button_url'] ) : ?>

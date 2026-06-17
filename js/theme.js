@@ -1,37 +1,72 @@
-;(function($, window, document, undefined) {
+/**
+ * PATH : Wordpress-ACF-Starter-Theme-master/js/theme.js
+ *
+ * GCHemp — theme.js
+ * Header scroll effect + scroll-reveal
+ */
 
-    /*
-        Global variable OBJECT is passed to this file called "wptheme"
+document.addEventListener('DOMContentLoaded', function () {
 
-        Valid properties:
+    /* ── Header scroll class ─────────────────────────── */
+    const header = document.getElementById('masthead');
 
-        ajaxurl - The AJAX url to post to, always populated,
-        nonce - A security precaution to prevent fraudulent AJAX requests, always populated
-        post_id - If on a page or post with a post ID this will be populated with it
-        post_name - If on a valid page or post, this will be populated
-        post_author - If on a valid page or post, this will be populated
-        post_type - If on a valid page or post, this will be populated
-        post_status - If on a valid page or post, this will be populated
-        post_date - If on a valid page or post, this will be populated
-    */
+    function updateHeader() {
+        if (window.scrollY > 60) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
 
-    // Document ready
-    $(function() {
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
 
-        /*
-            Example AJAX Request
+    /* ── Scroll reveal ───────────────────────────────── */
+    const revealEls = document.querySelectorAll(
+        '.about-section .section-header, .slide-content, .product-grid > img, .product-content'
+    );
 
-            $.post(
-                wptheme.ajaxurl, {
-                    action            : "wpwtheme-ajaxcall",
-                    themenonce : wptheme.nonce
-                },
-                function (response) {
-                    console.log(response);
-                }
-            );
-        */
-
+    revealEls.forEach(function (el) {
+        el.classList.add('reveal');
     });
 
-})(jQuery, window, document);
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(function (el) {
+        observer.observe(el);
+    });
+
+    // ── Header scroll state ──────────────────────────────────
+    (function () {
+        var header = document.getElementById('masthead');
+        if (!header) return;
+        function onScroll() {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    })();
+
+// ── Scroll reveal ────────────────────────────────────────
+    (function () {
+        var els = document.querySelectorAll('.reveal');
+        if (!els.length) return;
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('revealed');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        els.forEach(function (el) { io.observe(el); });
+    })();
+
+});

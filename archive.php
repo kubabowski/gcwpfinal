@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <section id="primary" class="content-area">
+    <section id="primary" class="content-area test-3">
         <main id="main" class="site-main" role="main">
 
         <?php if ( have_posts() ) : ?>
@@ -89,5 +89,5 @@
         </main><!-- #main -->
     </section><!-- #primary -->
 
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 <?php get_footer(); ?>

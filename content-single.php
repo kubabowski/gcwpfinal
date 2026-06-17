@@ -1,21 +1,29 @@
-sssss<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <header class="entry-header">
-        <h1 class="entry-title"><?php the_title(); ?></h1>
+<?php
+/**
+ * PATH: Wordpress-ACF-Starter-Theme-master/content-single.php
+ */
+?>
 
-        <div class="entry-meta">
-            <?php theme_posted_on(); ?>
-        </div><!-- .entry-meta -->
-    </header><!-- .entry-header -->
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <?php if ( ! is_product() ) : ?>
+        <header class="entry-header">
+            <h1 class="entry-title"><?php the_title(); ?></h1>
+            <div class="entry-meta">
+                <?php theme_posted_on(); ?>
+            </div>
+        </header>
+    <?php endif; ?>
 
     <div class="entry-content">
-        <?php the_content(); ?>
-        <?php
-            wp_link_pages( array(
-                'before' => '<div class="page-links">' . __( 'Pages:', 'wptheme' ),
-                'after'  => '</div>',
-            ) );
-        ?>
-    </div><!-- .entry-content -->
+        <div class="container">
+            <?php the_content(); ?>
+            <?php wp_link_pages( array(
+                    'before' => '<div class="page-links">' . __( 'Pages:', 'wptheme' ),
+                    'after'  => '</div>',
+            ) ); ?>
+        </div>
+    </div>
 
     <footer class="entry-meta">
         <?php

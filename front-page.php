@@ -9,7 +9,9 @@
 get_header();
 
 $data = get_template_data();
-
+?>
+<div></div>
+<?php
 // ── Home description ──────────────────────────────────────
 if ( ! empty( $data['home_desc'] ) ) {
     set_query_var( 'home_desc', $data['home_desc'] );

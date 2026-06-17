@@ -16,16 +16,27 @@
     <?php do_action( 'before' ); ?>
 
     <header id="masthead" class="site-header" role="banner">
-        <div class="site-branding">
-            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-            <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+        <div class="header-container container">
+            <div class="site-branding">
+                <?php if ( has_custom_logo() ) : ?>
+                    <div class="site-logo">
+                        <?php the_custom_logo(); ?>
+                    </div>
+                <?php else : ?>
+                    <h1 class="site-title">
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                            <?php bloginfo( 'name' ); ?>
+                        </a>
+                    </h1>
+                    <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+                <?php endif; ?>
+            </div>
+
+            <nav id="site-navigation" class="main-navigation" role="navigation">
+
+                <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+            </nav>
         </div>
-
-        <nav id="site-navigation" class="main-navigation" role="navigation">
-            <h1 class="menu-toggle"><?php _e( 'Menu', 'wptheme' ); ?></h1>
-
-            <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-        </nav><!-- #site-navigation -->
     </header><!-- #masthead -->
 
     <div id="content" class="site-content">

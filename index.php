@@ -1,7 +1,7 @@
 
 <?php get_header(); ?>
 
-    <div id="primary" class="content-area">
+    <div id="primary" class="content-area index">
         <main id="main" class="site-main" role="main">
 
         <?php if ( have_posts() ) : ?>
@@ -30,5 +30,5 @@
         </main><!-- #main -->
     </div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 <?php get_footer(); ?>

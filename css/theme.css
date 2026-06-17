@@ -352,7 +352,7 @@ a img.aligncenter {
   zoom: 1;
   *zoom: 1;
   margin: 0 auto;
-  max-width: 1200px;
+  /*max-width: 1200px;*/
   width: 100%;
 }
 #page:before,
@@ -371,19 +371,7 @@ a img.aligncenter {
 #page:after {
   clear: both;
 }
-#primary {
-  display: inline;
-  float: left;
-  width: 65%;
-  margin: 0 0.833333333%;
-}
-#secondary {
-  display: inline;
-  float: left;
-  width: 25%;
-  margin: 0 0.833333333%;
-  margin-left: 7.5%;
-}
+
 @media only screen and (min-width: 15rem) {
   
 }
